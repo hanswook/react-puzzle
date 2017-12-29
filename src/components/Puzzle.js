@@ -8,13 +8,16 @@ class Puzzle extends React.Component {
     this.state = {
       abc: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, '']
     }
+  }
+
+  componentDidMount() {
     this.initAbc();
   }
 
-  initAbc(){
+  initAbc() {
     var arraya = this.state.abc.sort(() => Math.random() - 0.5);
     this.setState({
-      abc:arraya
+      abc: arraya
     })
   }
 
@@ -58,7 +61,7 @@ class Puzzle extends React.Component {
   // 校验是否过关
   passFn() {
     if (this.state.abc[15] === '') {
-      const newPuzzles = this.state.abc.slice(0, 13)
+      const newPuzzles = this.state.abc.slice(0, 15)
 
       const isPass = newPuzzles.every((e, i) => e === i + 1)
 
@@ -80,9 +83,9 @@ class Puzzle extends React.Component {
           }
         </ul>
         <button className="btn-reset"
-                onClick={() => this.logTextarea(5)}>重置游戏
+                onClick={() => this.initAbc()}>重置游戏
         </button>
-        <div>{this.state.abc}</div>
+        <div>{this.state.abc+'\n'}</div>
         <div>{this.state.abc.length}</div>
       </div>
     )

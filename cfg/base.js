@@ -25,7 +25,14 @@ module.exports = {
     hot: true,
     port: defaultSettings.port,
     publicPath: defaultSettings.publicPath,
-    noInfo: false
+    noInfo: false,
+    proxy: {
+      '/api': {
+        target: 'http://user.reekly.com/',
+        pathRewrite: {'^/api' : '/campaign_huggies/t3store_freeuse/admin'},
+        changeOrigin: true
+      }
+    }
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
